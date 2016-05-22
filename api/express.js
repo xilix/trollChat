@@ -51,6 +51,6 @@ app.get('/:channel', function (req, res, next) {
 });
 
 app.listen(8080, function () {
-  console.log('Listen on port 8080');
+  console.log('Express server listen on port 8080');
 });
 
