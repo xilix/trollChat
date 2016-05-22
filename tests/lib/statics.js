@@ -1,12 +1,12 @@
 'use strict';
 
-const statics = requireTestSubject('lib/statics');
+const statics = require('lib/statics');
 
 var should = require('should');
 var redis = require('lib/redis');
 var fs = require('lib/fs');
 
-describe('statics', function () {
+describe('statics module', function () {
   let originalRedis;
   let originalFs;
   beforeEach(function () {

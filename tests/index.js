@@ -8,4 +8,6 @@ global.requireTestSubject = function (path) {
 
 describe('test suite', function () {
   require('./lib/statics');
+  require('./lib/auth');
+  require('./lib/socket');
 });

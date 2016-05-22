@@ -1,19 +1,28 @@
 'use strict';
 
 const sinon = require('sinon');
-const redis = require('redis');
+const redisRaw = require('redis');
 
-module.exports = {
+var mocks = {
   mockRedis: function (redis) {
+    redis.getSpy = sinon.spy();
+    redis.get = function (hash, key) {
+      redis.getSpy(hash, key);
+      return function thunk(cb) {
+        cb(null, redis.getReturn);
+      };
+    };
     redis.hmgetSpy = sinon.spy();
     redis.hmget = function (hash, key) {
       redis.hmgetSpy(hash, key);
       return function thunk(cb) {
-        cb(null, redis.hmgetReturn);
+        cb(null, [redis.hmgetReturn]);
       };
     };
+    redis.set = sinon.spy();
     redis.hmset = sinon.spy();
     redis.del = sinon.spy();
+    redis.expireat = sinon.spy();
 
     return redis;
   },
@@ -36,3 +45,5 @@ module.exports = {
     return fs;
   }
 };
+
+module.exports = mocks;

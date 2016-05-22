@@ -12,6 +12,8 @@ specTest:
 		NODE_PATH=. ./node_modules/mocha/bin/mocha --reporter spec tests/index.js
 test:
 		NODE_PATH=. ./node_modules/mocha/bin/mocha --reporter nyan tests/index.js
+watch:
+		NODE_PATH=. ./node_modules/mocha/bin/mocha --watch --reporter nyan tests/index.js
 debug: 
 		NODE_PATH=. ./node_modules/mocha/bin/mocha --debug-brk --reporter nyan tests/index.js
 spec: specTest
