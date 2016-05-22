@@ -40,7 +40,7 @@
     </div>
     <script src="static/socket.io-client/socket.io.js"></script>
     <script>
-      var socket = io('http://localhost:3000/{{channel}}');
+      var socket = io(window.location.hostname + ':3000/{{channel}}');
       var authorization = '';
 
       var getAuthorization = function () {
